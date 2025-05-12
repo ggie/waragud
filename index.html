@@ -1,101 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Auggie's Special Invitation</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Artist</title>
     <link rel="stylesheet" href="style.css">
-
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-
-    <script src="script.js" defer></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-900 text-gray-200 font-sans antialiased flex flex-col min-h-screen">
-
-    <nav class="bg-gray-800 shadow-md fixed w-full z-20 top-0 start-0 border-b border-gray-700">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <span class="self-center text-2xl font-semibold whitespace-nowrap text-teal-300">Auggie's Invite</span>
-            </a>
-            <button data-collapse-toggle="navbar-default" type="button" id="menu-button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <span class="lucide">&#xea5f;</span>
-            </button>
-            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-700 rounded-lg bg-gray-800 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-gray-800">
-                    <li><a href="#entry" class="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-teal-300 md:p-0">Home</a></li>
-                    <li><a href="#about" class="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-teal-300 md:p-0">About</a></li>
-                    <li><a href="#invite" class="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-teal-300 md:p-0">Invite</a></li>
-                </ul>
+<body>
+    <div class="game-container">
+        <h1>Guess the Artist</h1>
+        <div id="game-area">
+            <p class="instruction-text">Guess the artist of the album:</p>
+            <h2 id="album-title" class="album-title"></h2>
+            <input type="text" id="artist-guess" class="text-input" placeholder="Enter artist name">
+            <div class="button-group">
+                <button id="submit-guess" class="game-button">Guess</button>
+                <button id="refresh-album-button" class="game-button secondary-button">Skip Album</button>
             </div>
+            <p id="feedback" class="feedback-text"></p>
+            <p class="score-text">Correct Guesses: <span id="score" class="score-value">0</span>/5</p>
         </div>
-    </nav>
-
-    <section id="entry" class="flex flex-col items-center justify-center text-center min-h-screen pt-20 px-4 fade-in-element">
-        <div class="max-w-3xl">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white leading-tight">
-                A <span class="text-teal-300">Special Invitation</span> from Auggie
-            </h1>
-            <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-xl mx-auto">
-                This isn't just a website—it's a heartfelt invitation to share a memorable experience.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button id="see-invitation-button" class="px-8 py-3 bg-gradient-to-r from-teal-400 to-cyan-500 text-gray-900 font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
-                    See Invitation
-                </button>
-                <button id="maybe-later-button" class="px-8 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg shadow-md hover:bg-gray-600 hover:scale-105 transform transition duration-300 ease-in-out">
-                    Maybe Later
-                </button>
-            </div>
+        <div id="win-message" class="win-message hidden">
+            <p><strong>A Moment of Connection Achieved!</strong></p>
+            <p>You've successfully identified <span id="final-score"></span> artists, demonstrating a wonderful connection to the music.</p>
+            <p>In recognition of this shared understanding, Auggie has curated a special Spotify playlist just for you, era. Consider this a unique expression of his feelings, woven through the language of music.</p>
+            <p class="spotify-link-container"><a id="spotify-link" href="#" target="_blank" class="spotify-link">Discover Your Special Playlist</a></p>
         </div>
-    </section>
-
-    <section id="about" class="py-20 px-4 text-center bg-gray-800 hidden">
-         <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-teal-300">About This Invitation</h2>
-            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
-                This website was created with a special purpose in mind. It's a unique way for Auggie to extend a personal invitation to the Kaamulan Festival.
-            </p>
-             <p class="text-lg text-gray-300 leading-relaxed">
-                He hopes this little digital gesture brings a smile and makes the invitation feel even more personal.
-            </p>
-        </div>
-    </section>
-
-    <section id="invite" class="py-20 px-4 text-center hidden">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Will you join Auggie at the <span class="text-teal-300">Kaamulan Festival</span> on April 13th?</h2>
-            <p class="text-lg text-gray-300 mb-8 leading-relaxed">
-                He’s been looking forward to this. It's more than just the festival—it's about sharing a vibrant experience filled with culture and connection. Your presence would make it truly special.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                 <button id="yes-button" class="px-8 py-3 bg-gradient-to-r from-green-400 to-emerald-500 text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
-                    Yes, I'd love to!
-                </button>
-                <button id="no-button" class="px-8 py-3 bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
-                    Not this time, thank you
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <div class="heart-container" id="heartContainer"></div>
-
-    <audio id="bgMusic" src="https://cdn.pixabay.com/audio/2023/03/28/audio_4c9d6a6f39.mp3" loop preload="auto"></audio>
-
-    <div id="notificationModal" class="custom-modal-backdrop">
-        <div class="custom-modal-content text-center">
-            <h2 id="modalTitle" class="text-2xl font-bold mb-4 text-teal-300"></h2>
-            <p id="modalMessage" class="text-gray-300 mb-6"></p>
-            <button id="modalCloseButton" class="px-6 py-2 bg-teal-500 text-gray-900 font-semibold rounded-lg shadow hover:bg-teal-400 transition duration-200">
-                Close
-            </button>
-        </div>
+        <button id="refresh-button" class="game-button primary-button hidden">Play Again</button>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
