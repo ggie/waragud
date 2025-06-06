@@ -13,10 +13,10 @@
         <div id="game-area">
             <p class="instruction-text">Guess the artist of the album:</p>
             <h2 id="album-title" class="album-title"></h2>
-            <input type="text" id="artist-guess" class="text-input" placeholder="Enter artist name">
+            <p id="hint-text" class="hint-text hidden"></p> <input type="text" id="artist-guess" class="text-input" placeholder="Enter artist name">
             <div class="button-group">
                 <button id="submit-guess" class="game-button">Guess</button>
-                <button id="refresh-album-button" class="game-button secondary-button">Skip Album</button>
+                <button id="show-hint-button" class="game-button secondary-button">Show Hint</button> <button id="refresh-album-button" class="game-button secondary-button">Skip Album</button>
             </div>
             <p id="feedback" class="feedback-text"></p>
             <p class="score-text">Correct Guesses: <span id="score" class="score-value">0</span>/5</p>
